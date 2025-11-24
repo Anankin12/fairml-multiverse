@@ -20,7 +20,6 @@ numpy = "==1.23"
 pandas = "==1.4.4"
 smac = "*"
 pip = "*"
-install = "*"
 configspace = "*"
 fairness-multiverse = {editable = true, path = "./fairness_multiverse"}
 
