@@ -172,3 +172,6 @@ data/**/psam_p*.csv
 .trackdown
 
 /test/temp
+
+# Result files
+*.csv
