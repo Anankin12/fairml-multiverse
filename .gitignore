@@ -174,5 +174,5 @@ data/**/psam_p*.csv
 /test/temp
 
 # Result files
-*.csv
-m_*.ipynb
+runs/data/*
+runs/notebooks/*
