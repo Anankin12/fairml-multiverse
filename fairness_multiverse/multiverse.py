@@ -180,6 +180,28 @@ class MultiverseAnalysis:
             "missing_universes": missing_universes,
         }
 
+    def get_pending_universes(self) -> List[Dict[str, str]]:
+        """
+        Convenience helper returning configuration dicts for universes
+        which have no CSV output yet in this run.
+        """
+        info = self.check_missing_universes()
+        return info["missing_universes"]
+
+    def _log_failed_universe(self, universe_id: str, params: Dict[str, str], exc: Exception) -> None:
+        """
+        Append information about a failed universe to a JSONL log file.
+        """
+        failed_log_dir = self.get_run_dir(sub_directory="logs")
+        failed_log_path = failed_log_dir / "failed_universes.jsonl"
+        record = {
+            "universe_id": universe_id,
+            "params": params,
+            "error": repr(exc),
+        }
+        with failed_log_path.open("a", encoding="utf-8") as fp:
+            fp.write(json.dumps(record) + "\n")
+
     def generate_universe_id(self, universe_parameters):
         # Note: Getting stable hashes seems to be easier said than done in Python
         # See https://stackoverflow.com/questions/5884066/hashing-a-dictionary/22003440#22003440
@@ -195,9 +217,27 @@ class MultiverseAnalysis:
             # For n_jobs below -1, (n_cpus + 1 + n_jobs) are used.
             # Thus for n_jobs = -2, all CPUs but one are used
             Parallel(n_jobs=n_jobs)(
-                delayed(self.visit_universe)(universe_params)
+                delayed(self._safe_visit_universe)(universe_params)
                 for universe_params in multiverse_grid
             )
+
+    def _safe_visit_universe(self, universe_parameters: Dict[str, str]) -> None:
+        """
+        Wrapper around visit_universe that catches and logs exceptions.
+
+        This prevents a single failing universe (e.g. kernel startup errors)
+        from aborting the whole multiverse run.
+        """
+        try:
+            self.visit_universe(universe_parameters)
+        except Exception as exc:
+            universe_id = self.generate_universe_id(universe_parameters)
+            warnings.warn(
+                f"Universe {universe_id} failed with error: {exc!r}. "
+                f"Skipping this universe."
+            )
+            # Persist failure info so it can be inspected / retried explicitly.
+            self._log_failed_universe(universe_id, universe_parameters, exc)
 
     def visit_universe(self, universe_parameters: Dict[str, str]):
         """
