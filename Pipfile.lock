@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "cf54217195b58c92917429a30546663fd3550f54e94559e6a3777a305ebdafa1"
+            "sha256": "83c8c475d926942526da8b38484a0befb90df1e6f18201ef3380fb8e3f713d9c"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -1569,12 +1569,12 @@
         },
         "pip": {
             "hashes": [
-                "sha256:88f96547ea48b940a3a385494e181e29fb8637898f88d88737c5049780f196ea",
-                "sha256:c46efd13b6aa8279f33f2864459c8ce587ea6a1a59ee20de055868d8f7688f7f"
+                "sha256:65fd48317359f3af8e593943e6ae1506b66325085ea64b706a998c6e83eeaf38",
+                "sha256:908c78e6bc29b676ede1c4d57981d490cb892eb45cd8c214ab6298125119e077"
             ],
             "index": "pypi",
-            "markers": "python_version >= '3.8'",
-            "version": "==25.0.1"
+            "markers": "python_version >= '3.7'",
+            "version": "==22.3.1"
         },
         "pkgutil-resolve-name": {
             "hashes": [
@@ -2294,6 +2294,14 @@
             "markers": "python_version >= '3.7'",
             "version": "==4.67.1"
         },
+        "tqdm-joblib": {
+            "hashes": [
+                "sha256:786f4423f2282701db7959a2b4449d1e3ab60b4841f5a6d03ec49e8cb8946e0b",
+                "sha256:8588e0d04aa5d51a0fae3ce68206045a8117ec695daddeaea3012dfd8869d2a5"
+            ],
+            "index": "pypi",
+            "version": "==0.0.4"
+        },
         "traitlets": {
             "hashes": [
                 "sha256:9ed0579d3502c94b4b3732ac120375cda96f923114522847de4b3bb98b96b6b7",
@@ -2307,7 +2315,7 @@
                 "sha256:a439e7c04b49fec3e5d3e2beaa21755cadbbdc391694e28ccdd36ca4a1408f8c",
                 "sha256:e6c81219bd689f51865d9e372991c540bda33a0379d5573cddb9a3a23f7caaef"
             ],
-            "markers": "python_version >= '3.8'",
+            "markers": "python_version < '3.10'",
             "version": "==4.13.2"
         },
         "uri-template": {
@@ -2868,7 +2876,7 @@
                 "sha256:a439e7c04b49fec3e5d3e2beaa21755cadbbdc391694e28ccdd36ca4a1408f8c",
                 "sha256:e6c81219bd689f51865d9e372991c540bda33a0379d5573cddb9a3a23f7caaef"
             ],
-            "markers": "python_version >= '3.8'",
+            "markers": "python_version < '3.10'",
             "version": "==4.13.2"
         },
         "wcwidth": {
