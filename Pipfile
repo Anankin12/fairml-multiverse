@@ -5,7 +5,7 @@ name = "pypi"
 
 [packages]
 fairlearn = "*"
-scikit-learn = "*"
+scikit-learn = "<1.3"
 papermill = "*"
 folktables = {editable = true, ref = "39a6d5a8382b2e9503480d37390cb270e629836c", git = "https://github.com/jansim/folktables"}
 matplotlib = "*"
