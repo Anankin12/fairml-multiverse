@@ -18,8 +18,8 @@ tqdm = "*"
 fanova = "*"
 numpy = "==1.23"
 pandas = "==1.4.4"
-smac = "*"
-pip = "*"
+smac = "<1.0"
+pip = "<23.0"
 configspace = "*"
 fairness-multiverse = {editable = true, path = "./fairness_multiverse"}
 
