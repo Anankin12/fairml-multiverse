@@ -176,4 +176,4 @@ data/**/psam_p*.csv
 # Result files
 output/runs
 output/analyses
-paper/data/
+paper/data
